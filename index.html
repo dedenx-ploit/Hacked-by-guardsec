@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>H4CK3D BY GU4RD S3CUR1T1</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://files.catbox.moe/knk8gh.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Courier New', monospace;
+      color: #00ff00;
+      cursor: crosshair;
+      overflow: hidden;
+    }
+
+    #matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 5px solid #00ff00;
+      box-shadow: 0 0 25px lime;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 40px;
+      color: red;
+      animation: glitch 1s infinite;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px lime; }
+      20% { text-shadow: -2px -2px red; }
+      40% { text-shadow: 2px -2px blue; }
+      60% { text-shadow: -2px 2px yellow; }
+      80% { text-shadow: 0 0 10px white; }
+      100% { text-shadow: 2px 2px lime; }
+    }
+
+    #typing {
+      white-space: pre-line;
+      text-align: center;
+      font-size: 18px;
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border: 2px solid lime;
+      border-radius: 10px;
+      box-shadow: 0 0 15px red;
+      animation: blink 1s infinite alternate;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0.8; }
+    }
+
+    .marquee {
+      font-size: 22px;
+      font-weight: bold;
+      color: yellow;
+      background: black;
+      padding: 10px;
+      border-top: 2px solid red;
+      border-bottom: 2px solid red;
+      position: relative;
+      z-index: 1;
+    }
+
+    .audio-button {
+      display: block;
+      margin: 30px auto;
+      background-color: red;
+      color: white;
+      padding: 15px 40px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 0 15px yellow;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .audio-button:hover {
+      background-color: darkred;
+      transform: scale(1.05);
+    }
+
+    .terminal {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: black;
+      color: lime;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid lime;
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas efek matrix -->
+  <canvas id="matrix"></canvas>
+
+  <!-- Audio background -->
+  <audio id="bg-audio" loop>
+    <source src="https://files.catbox.moe/1wr9fd.mp4" type="audio/mpeg">
+  </audio>
+
+  <!-- Logo hacker -->
+  <div class="logo">
+    <img src="https://files.catbox.moe/aaawr5.jpg" alt="Hacker Logo">
+  </div>
+
+  <!-- Judul -->
+  <h1>HACKED BY GUARD SECURITY☠️🇲🇨</h1>
+
+  <!-- Marquee atas -->
+  <marquee class="marquee">⚠️SYSTEM TELAH DIKUASAI — GUARD SEC TEAM INDONESIA — WE NEVER FORGET⚠️</marquee>
+
+  <!-- Efek teks diketik -->
+  <div id="typing"></div>
+
+  <!-- Marquee bawah -->
+  <marquee class="marquee" direction="right">⚠️ INI BARU AWALNYA — SEMUA AKAN DIBUKA — #GU4RDT34M ⚠️</marquee>
+
+  <!-- Tombol kontrol audio -->
+  <button class="audio-button" onclick="toggleAudio()">🔊 Play / Pause Audio</button>
+
+  <!-- Terminal info -->
+  <div class="terminal">root@AnonDen404:~# Access Granted!</div>
+
+  <!-- Script -->
+  <script>
+    alert("Sistem Telah Dikuasai Oleh GuardSecrity");
+
+    const teks = `- Kelasmu penuh topeng, bukan teman sejati.
+- Tersakiti bukan karena lemah, tapi karena terlalu tulus.
+- Di balik senyum kelas, tersimpan tikaman tajam.
+- Aku belajar bukan untuk nilai, tapi untuk balas dendam.
+- Guru bisa ajar pelajaran, tapi tidak bisa ajar rasa dikhianati.
+- Dunia tidak butuh siswa pintar, tapi hati yang benar.
+- Ketika kelas jadi panggung drama, aku memilih jadi penulis akhir cerita.
+- Kalian tertawa saat aku jatuh, ingat... hacker tak lupa.
+- Sistem ini busuk, dan kami hanya cerminnya.
+- Kami bukan penjahat, kami adalah jawaban dari kejahatan.`;
+
+    let i = 0;
+    const speed = 50;
+
+    function typeEffect() {
+      if (i < teks.length) {
+        document.getElementById("typing").innerHTML += teks.charAt(i);
+        i++;
+        setTimeout(typeEffect, speed);
+      }
+    }
+
+    const audio = document.getElementById("bg-audio");
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+
+    // Matrix rain effect
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    let letters = '01'.split('');
+    let fontSize = 14;
+    let columns = canvas.width / fontSize;
+    let drops = [];
+
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#0F0';
+      ctx.font = fontSize + "px monospace";
+      for (let i = 0; i < drops.length; i++) {
+        let text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+          drops[i] = 0;
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 33);
+    window.onload = typeEffect;
+  </script>
+
+</body>
+</html>
